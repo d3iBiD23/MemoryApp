@@ -1,0 +1,10 @@
+.root {
+    -fx-background-color: #282c34;
+}
+
+.card {
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+}
