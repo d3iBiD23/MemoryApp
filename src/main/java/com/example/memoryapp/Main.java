@@ -1,21 +1,27 @@
 package com.example.memoryapp;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
-        MemoryGame game = new MemoryGame();
-        Scene scene = new Scene(new StackPane(game.getGameBoard()), 600, 600);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/memoryapp/main-view.fxml"));
+            Parent root = loader.load();
 
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+            Scene scene = new Scene(root, 600, 600);
+            scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
-        primaryStage.setTitle("Juego de Memoria");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            primaryStage.setTitle("Juego de Memoria");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {

@@ -1,6 +1,5 @@
 package com.example.memoryapp;
 
-import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +34,7 @@ public class GameBoard extends GridPane {
             firstCard = card;
         } else {
             secondCard = card;
-            if (firstCard.getId().equals(secondCard.getId())) {
+            if (firstCard.getCardId().equals(secondCard.getCardId())) {  // Usamos getCardId() en lugar de getId()
                 firstCard.setMatched(true);
                 secondCard.setMatched(true);
             } else {

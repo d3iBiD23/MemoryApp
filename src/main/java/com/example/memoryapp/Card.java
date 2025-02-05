@@ -6,14 +6,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
 public class Card extends StackPane {
-    private String id;
+    private String cardId;  // Renombramos la variable para evitar conflictos
     private ImageView frontImage;
     private ImageView backImage;
     private boolean flipped = false;
     private boolean matched = false;
 
     public Card(String id, String imagePath) {
-        this.id = id;
+        this.cardId = id;
 
         frontImage = new ImageView(new Image(getClass().getResourceAsStream(imagePath)));
         backImage = new ImageView(new Image(getClass().getResourceAsStream("/images/back.png")));
@@ -32,8 +32,8 @@ public class Card extends StackPane {
         }
     }
 
-    public String getId() {
-        return id;
+    public String getCardId() {  // Cambiamos el nombre del metodo
+        return cardId;
     }
 
     public boolean isFlipped() {
