@@ -25,7 +25,7 @@ public class GameBoard extends GridPane {
         for (int i = 1; i <= PAIRS; i++) {
             String imgPath = "/images/card" + i + ".png";
             cards.add(new Card(String.valueOf(i), imgPath));
-            cards.add(new Card(String.valueOf(i), imgPath)); // Par
+            cards.add(new Card(String.valueOf(i), imgPath)); // Pair
         }
     }
 

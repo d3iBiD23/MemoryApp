@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
+import java.io.InputStream;
+
 public class Card extends StackPane {
     private String cardId;  // Renombramos la variable para evitar conflictos
     private ImageView frontImage;
@@ -15,10 +17,18 @@ public class Card extends StackPane {
     public Card(String id, String imagePath) {
         this.cardId = id;
 
-        frontImage = new ImageView(new Image(getClass().getResourceAsStream(imagePath)));
-        backImage = new ImageView(new Image(getClass().getResourceAsStream("/images/back.png")));
+        // Use getResourceAsStream with absolute path
+        InputStream frontImageStream = getClass().getResourceAsStream(imagePath);
+        InputStream backImageStream = getClass().getResourceAsStream("/images/back.png");
 
-        frontImage.setVisible(false); // Empieza oculta
+        if (frontImageStream == null || backImageStream == null) {
+            throw new RuntimeException("Image resources not found: " + imagePath + " or back.png");
+        }
+
+        frontImage = new ImageView(new Image(frontImageStream));
+        backImage = new ImageView(new Image(backImageStream));
+
+        frontImage.setVisible(false);
         getChildren().addAll(backImage, frontImage);
 
         setOnMouseClicked(this::flipCard);
