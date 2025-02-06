@@ -42,7 +42,7 @@ public class Card extends StackPane {
         }
     }
 
-    public String getCardId() {  // Cambiamos el nombre del metodo
+    public String getCardId() {
         return cardId;
     }
 
